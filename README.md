@@ -1,64 +1,63 @@
-![cf](https://i.imgur.com/7v5ASc8.png) 11: Express
-======
+# RESTful API ![travis build status](https://travis-ci.com/tganyan/11-14-express-api.svg?branch=master)
 
-### Submission Instructions
- * Work in a fork of this repository
- * Work in a branch on your fork
- * Create a PR to your master from your working branch.
- * Ensure that your repository/branch is connected to travis-ci.com
- * Heroku and Travis should pick you up and deploy
- * Submit on canvas:
-   * a question and observation
-   * how long you spent
-   * link to your pull request
-   * link to your build at travis-ci URL
- 
- ## Configuration 
- Configure the root of your repository with the following files and directories. Thoughfully name and organize any aditional configuration or module files.
- * **README.md** - contains documentation
- * **.env** - contains env variables (should be git ignored)
- * **.gitignore** - contains a [robust](http://gitignore.io) `.gitignore` file 
- * **.eslintrc** - contains the course linter configuratoin
- * **.eslintignore** - contains the course linter ignore configuration
- * **.travis.yml** - contains the course linter ignore configuration
- * **package.json** - contains npm package config
-   * create a `lint` script for running eslint (eslint **/*.js)
-   * create a `test` script for running tests
-   * create a `start` script for running your server
- * **index.js** - the entry point for your application
- * **src/** - contains your core application files and folders
- * **src/app.js** - (or main.js) contains your core application bootstrap
- * **src/lib/** - contains module definitions
- * **\_\_test\_\_/** - contains unit tests
+This is a project to build a restful api with the ability to get, put, post, and delete json data.
 
-## Learning Objectives  
-* students will be able to create a single resource API using the express framework
+## Getting Started
 
-## Requirements
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-#### Feature Tasks
-* create an HTTP server using `express`
-* create a object constructor that creates a _simple resource_ with at least 3 properties
-  * it can **not** have the same properties as the in-class sample code (other than the `id`)
-  * a unique `id` property should be included *(node-uuid)*
-  * include two additional properties of your choice
-* persist your API data using either an array or an array and an object as seen in class. 
+### Prerequisites
 
-#### Server Endpoints
-* **`/api/vi/resource-name`**
-* `POST` request
- * pass data as stringifed JSON in the body of a **POST** request to create a new resource
-* `GET` request
- * pass `/:id` as a route parameter to **GET** a specific resource (as JSON)
-* `DELETE` request
- * pass `/:id` as a route parameter to **DELETE** a specific resource (as JSON)
- * this should return a 204 status code with no content in the body
+You must have NodeJS installed along with either NPM or Yarn.
 
-#### Tests
-* write a test to ensure that your api returns a status code of 404 for routes that have not been registered
-* write tests to ensure the `/api/simple-resource-name` endpoint responds as described for each condition below:
- * `GET`: test 404, it should respond with 'not found' for valid requests made with an id that was not found
- * `GET`: test 400, it should respond with 'bad request' if no id was provided in the request
- * `GET`: test 200, it should contain a response body for a request made with a valid id
- * `POST`: test 400, it should respond with 'bad request' if no request body was provided or the body was invalid
- * `POST`: test 200, it should respond with the body content for a post request with a valid body
+### Installing
+
+Copy the link from the github repository
+In the command line, navigate to the parent directory where you want to store this project
+In the command line, type:
+```
+git clone <repository url>
+```
+Once the project files are there, type:
+```
+npm install
+```
+or
+```
+yarn i
+```
+
+## Running the tests
+
+1. Testing for valid post request
+2. Testing for proper response on invalid post request
+3. Testing for proper response on delete request
+4. Testing get method on route with query parameter
+
+Will update soon with instructions to run individual tests, but the below command should be sufficient for all tests.
+
+#####To run all tests:
+```
+npm run test
+```
+
+## Built With
+
+* [NodeJS](https://nodejs.org) - The javascript runtime used
+* [Jest](https://jestjs.io/) - Testing platform used
+* [Eslint](https://eslint.org/) - Coding style linter
+* [Superagent](https://visionmedia.github.io/superagent/) - AJAX with less suck!
+* [Httpie](https://httpie.org/) - A fantastic http client
+* [Winston](https://www.npmjs.com/package/winston) - One seriously awesome logging tool
+* [Express](https://www.npmjs.com/package/express) - A robust and versatile tool for creating servers
+* [Faker](https://www.npmjs.com/package/faker) - A useful package for generating fake test data
+* [Body Parser](https://www.npmjs.com/package/body-parser) - A middleware tool for parsing requests
+
+
+## Authors
+
+* [**Tyler Anyan**](http://tyleranyan.com/)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
