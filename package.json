@@ -8,7 +8,15 @@
     "test": "test"
   },
   "scripts": {
-    "test": "jest --coverage"
+    "test": "eslint . && jest --coverage",
+    "lint": "eslint .",
+    "dbOn": "mkdir -p ./db && mongod --dbpath ./db",
+    "test": "killall mongod",
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/src/__test__/lib/test.env.js"
+    ]
   },
   "repository": {
     "type": "git",
