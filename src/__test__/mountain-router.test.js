@@ -41,30 +41,28 @@ describe('api/mountains', () => {
     });
   });
 
-  // describe('testing put request', () => {
-  //   test('should respond with 200 status code and updated json mountain', () => {
-  //     const originalRequest = {
-  //       name: faker.lorem.words(2),
-  //       elevation: faker.random.number(),
-  //     };
-  //     return superagent.post(API_URL)
-  //       .set('Content-Type', 'application/json')
-  //       .send(originalRequest)
-  //       .then((postResponse) => {
-  //         originalRequest.id = postResponse.body.id;
-  //         return superagent.put(`${API_URL}/${postResponse.body.id}`)
-  //           .set('Content-Type', 'application/json')
-  //           .send({
-  //             name: 'Pilchuck YO!',
-  //             elevation: '5,800′',
-  //           });
-  //       })
-  //       .then((getResponse) => {
-  //         expect(getResponse.body.name).toEqual('Pilchuck YO!');
-  //         expect(getResponse.body.elevation).toEqual('5,800');
-  //       });
-  //   });
-  // });
+  describe('testing put request', () => {
+    test('should respond with 200 status code and updated json mountain', () => {
+      const originalRequest = {
+        name: faker.lorem.words(2),
+        elevation: faker.random.number(),
+      };
+      return superagent.post(API_URL)
+        .set('Content-Type', 'application/json')
+        .send(originalRequest)
+        .then((postResponse) => {
+          originalRequest.id = postResponse.body.id;
+          return superagent.put(`${API_URL}/${postResponse.body.id}`)
+            .send({
+              name: 'Pilchuck YO!',
+            });
+        })
+        .then((getResponse) => {
+          expect(getResponse.body.name).toEqual('Pilchuck YO!');
+          expect(getResponse.body.elevation).toEqual(originalRequest.elevation);
+        });
+    });
+  });
 
   describe('testing get methods', () => {
     test('should respond with 200 status code if there is a matching name', () => {
@@ -89,7 +87,7 @@ describe('api/mountains', () => {
   });
 
   describe('testing delete requests', () => {
-    test('should respond with 200 status code', () => {
+    test('should respond with 204 status code', () => {
       const originalRequest = {
         name: faker.lorem.words(2),
         elevation: faker.random.number(),
@@ -102,7 +100,7 @@ describe('api/mountains', () => {
           return superagent.delete(`${API_URL}/${postResponse.body.id}`);
         })
         .then((getResponse) => {
-          expect(getResponse.status).toEqual(200);
+          expect(getResponse.status).toEqual(204);
         });
     });
   });
