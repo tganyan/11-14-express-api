@@ -28,8 +28,8 @@ let internalServer = null;
 // };
 
 server.start = () => {
-  internalServer = app.listen(3000, () => {
-    logger.log(logger.INFO, 'Server is on at PORT: 3000');
+  internalServer = app.listen(process.env.PORT, () => {
+    logger.log(logger.INFO, `Server is on at PORT: ${process.env.PORT}`);
   });
 };
 
