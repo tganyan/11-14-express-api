@@ -1,14 +1,22 @@
 'use strict';
 
-const uuid = require('uuid/v1');
+const mongoose = require('mongoose');
 
-class Mountain {
-  constructor(name, elevation) {
-    this.id = uuid();
-    this.timestamp = new Date();
-    this.name = name;
-    this.elevation = elevation;
-  }
-}
+const mountainSchema = mongoose.Schema({
+  timestamp: {
+    type: Date,
+    default: () => Date(),
+  },
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  elevation: {
+    type: Number,
+    required: true,
+    unique: true,
+  },
+})
 
-module.exports = Mountain;
+module.exports = mongoose.model('mountain', mountainSchema);

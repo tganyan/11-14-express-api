@@ -30,13 +30,21 @@ yarn i
 ## Running the tests
 
 1. Testing for valid post request
-2. Testing for proper response on invalid post request
+2. Testing for proper response on bad route request
 3. Testing for proper response on delete request
 4. Testing get method on route with query parameter
+5. Testing for valid put request
+6. Testing for proper response on valid route with no id
+7. Testing for proper response on get request with no name
 
 Will update soon with instructions to run individual tests, but the below command should be sufficient for all tests.
 
-#####To run all tests:
+##### To run individual tests (GET, PUT, POST, DELETE), use the below route:
+```
+/api/mountains/
+```
+
+##### To run all tests:
 ```
 npm run test
 ```
@@ -52,6 +60,8 @@ npm run test
 * [Express](https://www.npmjs.com/package/express) - A robust and versatile tool for creating servers
 * [Faker](https://www.npmjs.com/package/faker) - A useful package for generating fake test data
 * [Body Parser](https://www.npmjs.com/package/body-parser) - A middleware tool for parsing requests
+* [MongoDB](https://www.mongodb.com/) - A dynamic database
+* [Mongoosejs](https://www.npmjs.com/package/mongoose) - An asynchronous object modeling tool
 
 
 ## Authors
