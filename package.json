@@ -8,10 +8,10 @@
     "test": "test"
   },
   "scripts": {
-    "test": "eslint . && jest --coverage",
+    "test": "jest --coverage",
     "lint": "eslint .",
     "dbOn": "mkdir -p ./db && mongod --dbpath ./db",
-    "test": "killall mongod",
+    "dbOff": "killall mongod"
   },
   "jest": {
     "setupFiles": [
@@ -41,6 +41,7 @@
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "http-errors": "^1.7.1",
+    "mongoose": "^5.2.17",
     "superagent": "^4.0.0-beta.5",
     "uuid": "^3.3.2",
     "winston": "^3.1.0"
