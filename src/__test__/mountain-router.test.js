@@ -97,7 +97,8 @@ describe('api/mountains', () => {
         .then(() => {
           return superagent.get(`${API_URL}/somebadroute`);
         })
-        .then((getResponse) => {
+        .then(Promise.reject)
+        .catch((getResponse) => {
           expect(getResponse.status).toEqual(404);
         });
     });
@@ -106,7 +107,8 @@ describe('api/mountains', () => {
         .then(() => {
           return superagent.get(`${API_URL}/`);
         })
-        .then((getResponse) => {
+        .then(Promise.reject)
+        .catch((getResponse) => {
           expect(getResponse.status).toEqual(400);
         });
     });

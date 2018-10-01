@@ -26,10 +26,16 @@ router.get('/api/mountains/:id', (request, response, next) => {
         logger.log(logger.INFO, 'Responding with a 200 status code and a mountain');
         return response.json(mountain);
       }
+      console.log('I have reached the GET error check');
       logger.log(logger.INFO, 'Responding with a 404 status code. Mountain not found');
       return next(new HttpError(404, 'mountain not found'));
     })
     .catch(next);
+});
+
+router.get('/api/mountains/', (request, response) => {
+  logger.log(logger.INFO, 'Responding with a 404 status code. Mountain not found sadasdasdadas');
+  return response.sendStatus(400);
 });
 
 router.delete('/api/mountains/:id', (request, response, next) => {
@@ -46,7 +52,7 @@ router.delete('/api/mountains/:id', (request, response, next) => {
 });
 
 router.put('/api/mountains/:id', jsonParser, (request, response, next) => {
-  return Mountain.findByIdAndUpdate(request.params.id)
+  return Mountain.findByIdAndUpdate(request.params.id, request.body, { new: true })
     .then((updatedMountain) => {
       if (updatedMountain) {
         logger.log(logger.INFO, 'Mountain has been found and updated.');
