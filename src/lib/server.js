@@ -6,11 +6,13 @@ const logger = require('./logger');
 const loggerMiddleware = require('./logger-middleware');
 const errorMiddleware = require('./error-middleware');
 const mountainRoutes = require('../routes/mountain-router');
+const regionRoutes = require('../routes/region-router');
 
 const app = express();
 
 app.use(loggerMiddleware);
 app.use(mountainRoutes);
+app.use(regionRoutes);
 
 app.all('*', (request, response) => {
   logger.log(logger.INFO, 'Returning a 404 from default route (route was not found)');
